@@ -28,7 +28,6 @@ public class Board {
     }
 
     public void highlight(Set<Coordinate> coordinates){
-
         for (Coordinate c : coordinates)
             cells.get(c).highlight();
     }
@@ -107,27 +106,6 @@ public class Board {
 
     }
 
-
-//    @Override
-//    public String toString() {
-//        String output = "   A  B  C  D  E  F  G  H\n";
-//        for (int i = 0; i < 8; i++) {
-//            output += (i+1) + " ";
-//            for (int j = 0; j < 8; j++) {
-//                output += cells[i][j];
-//            }
-//            output += " " + (i+1) + "\n";
-//        }
-//
-//        output += "   A  B  C  D  E  F  G  H";
-//
-//        output +="\n\n"+deletedPieceManager.toString();
-//
-//        return output;
-//    }
-
-
-
     public void testPlacePawn(){
         Piece p;
         p = new PawnWhite(getCell(new Coordinate('B',6)));
@@ -181,8 +159,6 @@ public class Board {
         p = new RookBlack(getCell(new Coordinate('C',6)));
         //   p.putInYourPlace();
     }
-
-
     public void testPlaceKnight(){
         Piece p;
         p = new KnightWhite(getCell(new Coordinate('D',6)));
@@ -192,5 +168,6 @@ public class Board {
         p = new KnightBlack(getCell(new Coordinate('B',7)));
         // p.putInYourPlace();
     }
+
 
 }

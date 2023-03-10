@@ -16,27 +16,27 @@ public class DeletedPieceManager implements IDeletedPieceManager{
         pieces.add(piece);
     }
     public int count(Piece.Type type){
-        return (int) pieces.stream().count();
+        return (int) pieces.stream().filter(piece -> piece.getType().equals(type)).count();
     }
     public Piece removeLast(){
         return pieces.remove(0);
     }
 
+
     @Override
-    public String toString() {
-        String output = "";
+    public String toString(){
+        String output="        ";
 
         for (Piece.Type type : Piece.Type.values())
-            output += colorize(" " + type.getShape() + " ", type.getColor().getPieceColor(), Cell.Color.BLACK_CELL.getAttribute());
+            output += colorize(" " + type.getShape() +" ",type.getColor().getPieceColor(),Cell.Color.BLACK_CELL.getAttribute());
 
-        output += "\n";
+        output += "\n        ";
 
         for (Piece.Type type : Piece.Type.values())
-            //output += colorize(" " + pieces.count(type) +" ",type.getColor().getPieceColor(),Cell.Color.WHITE_CELL.getAttribute());
-
-            return output;
+            output += colorize(" " + count(type) +" ",type.getColor().getPieceColor(),Cell.Color.WHITE_CELL.getAttribute());
 
         return output;
+
     }
 
 }

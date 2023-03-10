@@ -40,24 +40,14 @@ public abstract class Piece {
         cell.setPiece(null);
         cell=null;
     }
-
     public abstract Set<Coordinate> getNextMovements();
-
-//    protected void check(Coordinate coordinate, ListCoor coordinates){
-//        Board board = getCell().getBoard();
-//
-//        if (board.getCell(coordinate) != null)
-//            if (board.getCell(coordinate).isEmpty() ||
-//                    board.getCell(coordinate).getPiece().getColor() != getColor())
-//                coordinates.add(coordinate);
-//    }
-
     public boolean moveTo(Cell destination){
         if (cell == null || !getNextMovements().contains(destination.getCoordinate()))
             return false;
 
         if (destination.containsPiece()){
             destination.getPiece().removePiece();
+            destination.setPiece(destination.getPiece());
         }
 
         cell.setPiece(null);
@@ -103,18 +93,18 @@ public abstract class Piece {
     }
 
     public enum Type{
-        WHITE_KING("\u265A", Color.WHITE),
-        BLACK_KING("\u265A", Color.BLACK),
-        WHITE_QUEEN("\u265B", Color.WHITE),
-        BLACK_QUEEN("\u265B", Color.BLACK),
-        WHITE_ROOK("\u265C", Color.WHITE),
-        BLACK_ROOK("\u265C", Color.BLACK),
-        WHITE_BISHOP("\u265D", Color.WHITE),
-        BLACK_BISHOP("\u265D", Color.BLACK),
-        WHITE_KNIGHT("\u265E", Color.WHITE),
-        BLACK_KNIGHT("\u265E", Color.BLACK),
-        WHITE_PAWN("\u2659", Color.WHITE),
-        BLACK_PAWN("\u2659", Color.BLACK);
+        WHITE_KING("♚", Color.WHITE),
+        BLACK_KING("♚", Color.BLACK),
+        WHITE_QUEEN("♛", Color.WHITE),
+        BLACK_QUEEN("♛", Color.BLACK),
+        WHITE_ROOK("♜", Color.WHITE),
+        BLACK_ROOK("♜", Color.BLACK),
+        WHITE_BISHOP("♝", Color.WHITE),
+        BLACK_BISHOP("♝", Color.BLACK),
+        WHITE_KNIGHT("♞", Color.WHITE),
+        BLACK_KNIGHT("♞", Color.BLACK),
+        WHITE_PAWN("♙", Color.WHITE),
+        BLACK_PAWN("♙", Color.BLACK);
         private String shape;
         private Color color;
         private Type(String shape, Color color) {
